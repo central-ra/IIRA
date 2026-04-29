@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IIRA Central</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#000;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+header{
+  position:fixed;
+  width:100%;
+  padding:14px 24px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(255,0,0,0.15);
+  z-index:100;
+}
+
+.logo{
+  font-family:'JetBrains Mono', monospace;
+  font-size:16px;
+  color:#ff1a1a;
+}
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:0 6vw;
+  width:100%;
+  background:
+    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.95)),
+    url('world.jpeg') center/cover;
+}
+
+.hero h1,
+.content p,
+.iira-desc{
+  max-width:800px;
+}
+
+.sub{
+  margin-top:10px;
+  font-size:13px;
+  color:#888;
+  letter-spacing:1px;
+}
+
+.content{
+  width:100%;
+  padding:60px 6vw;
+}
+
+.content p{
+  font-size:15px;
+  color:#b0b0b0;
+  line-height:1.7;
+  margin-bottom:18px;
+}
+
+.nav{
+  margin-top:25px;
+}
+
+.nav a{
+  display:inline-block;
+  margin-right:10px;
+  font-size:13px;
+  text-decoration:none;
+  color:#ff1a1a;
+  padding:6px 10px;
+  border:1px solid rgba(255,0,0,0.15);
+  border-radius:4px;
+  transition:.2s;
+}
+
+.nav a:hover{
+  background:rgba(255,0,0,0.08);
+}
+
+.iira-box{
+  width:100%;
+  padding:60px 6vw;
+  border-left:1px solid rgba(255,0,0,0.25);
+}
+
+.iira-title{
+  font-family:'JetBrains Mono', monospace;
+  color:#ff1a1a;
+  font-size:16px;
+  margin-top:30px;
+  margin-bottom:8px;
+  letter-spacing:1px;
+}
+
+.iira-desc{
+  font-family:'Inter',sans-serif;
+  font-size:14px;
+  color:#aaa;
+  line-height:1.6;
+  margin-bottom:10px;
+}
+
+
+.flag-section {
+  width: 100%;
+  padding: 80px 6vw;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  border-left: 4px solid #ff1a1a; 
+  margin: 60px 0;
+  position: relative; 
+  overflow: hidden;
+  background: #000;
+}
+
+
+.flag-video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 1;
+  transform: translate(-50%, -50%) scale(1.15); 
+  filter: blur(5px) brightness(0.4); 
+  object-fit: cover;
+}
+
+.flag-container {
+  flex: 1;
+  max-width: 400px;
+  position: relative;
+  z-index: 2; 
+}
+
+.flag-container img {
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(255,0,0,0.3);
+  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+}
+
+.flag-info {
+  flex: 1.5;
+  position: relative;
+  z-index: 2; 
+}
+
+.flag-info h2 {
+  font-family: 'JetBrains Mono', monospace;
+  color: #ff1a1a;
+  font-size: 18px;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+
+.flag-info p {
+  font-size: 14px;
+  color: #eee; 
+  line-height: 1.8;
+  max-width: 600px;
+}
+
+@media (max-width: 768px) {
+  .flag-section { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">IIRA CENTRAL</div>
+</header>
+
+<section class="hero">
+  <h1>WE ARE INDEPENDENT RESEARCHERS</h1>
+  <p class="sub">IIRA network central sites</p>
+</section>
+
+<section class="content">
+  <p>
+  We, IIRA, are independent researchers focused on gathering information and risks from the data we manage, with the goal of maintaining security, stability, and protecting against real threats. we, IIRA are not terrorists or threat actors. We simply manage information and conduct research to learn things solely for security purposes. So, when a real threat emerges, IIRA is ready to deal with it—not a military or intelligence threat.
+  </p>
+
+  <p>
+  IIRA is built on experience, field understanding, and the courage to try, even if 99% of those attempts fail. The IIRA has experienced repeated failures in various fields. Therefore, the IIRA continues to learn from its mistakes to understand the realities on the ground. The IIRA is neutral. There are no enemies, no interference. And if there is interference, there is an enemy, and IIRA always forgives it.
+  </p>
+
+  <div class="nav">
+    <a href="about.html">About</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</section>
+
+<section class="iira-box">
+  <div class="iira-title" id="title1"></div>
+  <div class="iira-desc" id="desc1"></div>
+
+  <div class="iira-title" id="title2"></div>
+  <div class="iira-desc" id="desc2"></div>
+</section>
+
+<section class="flag-section">
+  <video autoplay muted loop playsinline class="flag-video-bg">
+    <source src="flag.mp4" type="video/mp4">
+  </video>
+
+  <div class="flag-container">
+    <img src="flag.png" alt="IIRA FLAG">
+  </div>
+  <div class="flag-info">
+    <h2>IIRA NATIONAL SYMBOL</h2>
+    <p>
+      our flag was built on meaningful experiences. Black symbolizes darkness, meaning the effort of failure and exhaustion. Red symbolizes the courage to try even if the outcome is 100% failure. White symbolizes the success of all exhausting efforts.
+    </p>
+  </div>
+</section>
+
+<script>
+const data = [
+  {
+    title: "SECURITY",
+    desc: "IIRA has decided to remain vigilant in handling data and information security, with the aim of not harming any party, in order to maintain peace."
+  },
+  {
+    title: "IIRA Rules",
+    desc: "The IIRA welcomes cooperation in various fields, but cooperation must be neutral, in the interests of peace and security, such as research and development. The IIRA does not wish to become involved in highly specific issues. Simply put, the IIRA will remain neutral, as long as no one interferes first."
+  }
+];
+
+let section = 0;
+let i = 0;
+let j = 0;
+
+function typeTitle(){
+  const el = document.getElementById("title" + (section+1));
+  if(i < data[section].title.length){
+    el.innerHTML += data[section].title.charAt(i);
+    i++;
+    setTimeout(typeTitle, 60);
+  } else {
+    typeDesc();
+  }
+}
+
+function typeDesc(){
+  const el = document.getElementById("desc" + (section+1));
+  if(j < data[section].desc.length){
+    el.innerHTML += data[section].desc.charAt(j);
+    j++;
+    setTimeout(typeDesc, 30);
+  } else {
+    section++;
+    i = 0;
+    j = 0;
+    if(section < data.length){
+      setTimeout(typeTitle, 600);
+    }
+  }
+}
+
+setTimeout(typeTitle, 1500);
+</script>
+
+</body>
+</html>

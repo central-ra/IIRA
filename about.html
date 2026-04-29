@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About IIRA</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0; padding: 0;
+  font-family: 'Inter';
+  background: #000;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* BACKGROUND JARINGAN - TETAP FIX SAAT SCROLL */
+#networkCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: -1;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  padding: 25px 40px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent);
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.logo {
+  font-family:'JetBrains Mono', monospace;
+  font-size: 22px; color: #ff1a1a;
+  letter-spacing: 3px; text-transform: uppercase;
+}
+
+section {
+  position: relative;
+  z-index: 10;
+}
+
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 32px; color: #ff1a1a;
+  margin: 100px 40px 20px 40px;
+  text-transform: uppercase;
+}
+
+.home-btn {
+  display: inline-block;
+  margin: 100px 0 0 40px;
+  font-size: 13px; color: red;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.slider {
+  position: relative;
+  width: 100vw;
+  height: 85vh;
+  overflow: hidden;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide {
+  position: absolute;
+  width: 100%; height: 100%;
+  opacity: 0; visibility: hidden;
+  transition: opacity 3s ease-in-out, visibility 3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide.active { opacity: 1; visibility: visible; }
+.slide.exiting { opacity: 0; visibility: visible; }
+
+
+.slide img {
+  width: auto;
+  max-width: 60%;
+  max-height: 70%;
+  object-fit: contain;
+  
+  
+  -webkit-mask-image: 
+    linear-gradient(to bottom, transparent, black 15%, black 85%, transparent),
+    linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+
+  filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.2));
+}
+
+.caption {
+  position: absolute;
+  bottom: 40px; left: 40px;
+  background: rgba(0,0,0,0.8);
+  padding: 10px 20px;
+  border-left: 4px solid #ff1a1a;
+  font-size: 18px; color: white;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.desc {
+  padding: 60px 40px;
+  font-size: 18px; color: #ccc;
+  line-height: 1.8; max-width: 900px;
+  background: transparent;
+}
+.desc p { margin-bottom: 30px; }
+</style>
+</head>
+
+<body>
+
+<canvas id="networkCanvas"></canvas>
+
+<header><div class="logo">IIRA central</div></header>
+
+<section>
+  <a href="index.html" class="home-btn">← Home</a>
+  <h1>About Us IIRA</h1>
+
+  <div class="slider">
+    <div class="slide active">
+      <img src="iira.png">
+      <div class="caption">IIRA Agency</div>
+    </div>
+    <div class="slide">
+      <img src="irca.png">
+      <div class="caption">Cyber Research</div>
+    </div>
+    <div class="slide">
+      <img src="isra.png">
+      <div class="caption">Space Research Agency</div>
+    </div>
+    <div class="slide">
+      <img src="iora.png">
+      <div class="caption">Marine Research</div>
+    </div>
+  </div>
+
+  <div class="desc">
+    <p>we have analytical data in both technology and non-technology fields. we create and use our tools for various purposes, such as research and analysis of potential threats, such as earthquakes, cyberattacks, and other events. we analyze based on verified raw data. Research is conducted over weeks, months, and beyond to ensure scientific validity. while not completely accurate, there are some errors. therefore, the IIRA will continue to learn. The IIRA often discovers new things, both in technology and other fields. we pride ourselves on our research successes and discoveries in various fields. Therefore, the black, red, and white IIRA flag is a symbol of pride in our success.</p>
+    <p>IIRA always maintains honesty in its research and findings. If we lack information and data, our research needs further verification to avoid misunderstandings. If data and information are lacking, the research results will also be less than optimal. IIRA cannot claim something that has not been clearly and correctly proven. that is our rule in researching various matters. therefore, IIRA sincerely apologizes if the research findings are very low because we do not have extensive resources. The information we obtain is also often limited due to limitations. therefore, the results are also limited.</p>
+    <p>so we at IIRA conduct research to find new discoveries to be used as scientific knowledge.</p>
+  </div>
+</section>
+
+<script>
+const canvas = document.getElementById('networkCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function initCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+class Particle {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.4; 
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.radius = Math.random() * 2;
+    }
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+    }
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 26, 26, 0.7)';
+        ctx.fill();
+    }
+}
+
+function createParticles() {
+    particles = [];
+    for (let i = 0; i < 150; i++) particles.push(new Particle());
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, index) => {
+        p.update();
+        p.draw();
+        for (let j = index + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+            if (dist < 200) { 
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.strokeStyle = `rgba(255, 26, 26, ${0.5 - dist/200})`;
+                ctx.lineWidth = 0.8;
+                ctx.stroke();
+            }
+        }
+    });
+    requestAnimationFrame(animate);
+}
+
+window.addEventListener('resize', initCanvas);
+initCanvas();
+createParticles();
+animate();
+
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+
+function showNextSlide() {
+    const previous = currentSlide;
+    slides[previous].classList.remove('active');
+    slides[previous].classList.add('exiting');
+    currentSlide = (currentSlide + 1) % totalSlides;
+    slides[currentSlide].classList.add('active');
+    setTimeout(() => {
+        slides[previous].classList.remove('exiting');
+    }, 3000);
+}
+setInterval(showNextSlide, 8000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FAQ</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body{margin:0;font-family:'Inter';background:black;color:white}
+
+header{
+  position:fixed;
+  width:100%;
+  padding:12px 20px;
+  background:rgba(0,0,0,0.7);
+}
+
+.logo{
+  font-family: 'JetBrains Mono', monospace;
+  font-size:22px;
+  color:#ff1a1a;
+}
+
+section{padding:80px 20px}
+
+h1{font-size:18px;color:#ff1a1a}
+
+.faq-item{
+  margin-top:10px;
+  border:1px solid rgba(255,0,0,0.15);
+  border-radius:8px;
+}
+
+.faq-btn{
+  width:100%;
+  padding:12px;
+  background:#0a0a0a;
+  color:white;
+  border:none;
+  text-align:left;
+  font-size:13px;
+}
+
+.faq-content{
+  max-height:0;
+  overflow:hidden;
+  transition:.3s;
+  font-size:12px;
+  color:#aaa;
+  padding:0 12px;
+}
+
+.faq-item.active .faq-content{
+  max-height:120px;
+  padding:10px 12px;
+}
+
+.home-btn{
+  display:inline-block;margin-bottom:10px;
+  font-size:12px;color:white;text-decoration:none;
+  border:1px solid rgba(255,0,0,0.2);
+  padding:6px 10px;border-radius:5px;
+}
+</style>
+</head>
+
+<body>
+
+<header><div class="logo">IIRA SITES FAQ</div></header>
+
+<section>
+
+<a href="index.html" class="home-btn">← Home</a>
+
+<h1>FAQ</h1>
+
+<div class="faq-item">
+<button class="faq-btn">what does IIRA stand for?</button>
+<div class="faq-content">no abbreviations just the name</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-btn">is it from a state secret organization?</button>
+<div class="faq-content">in short no. because we have no relations with any of those countries.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-btn">where to read IIRA research?</button>
+<div class="faq-content">search on the Tor network or I2P ygg and so on, each research network is different.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-btn">is the research accurate?</button>
+<div class="faq-content">Yes and no. It depends on the resources we use before it becomes data.</div>
+</div>
+
+</section>
+
+<script>
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.querySelector('.faq-btn').onclick=()=>{
+    item.classList.toggle('active');
+  }
+});
+</script>
+
+</body>
+</html>
